@@ -1,0 +1,411 @@
+﻿<Window x:Class="测试.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:测试"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1200">
+    <Grid Loaded="Grid_Loaded">
+        <DockPanel HorizontalAlignment="Left" Height="3.2" LastChildFill="False" Margin="370.8,60.2,0,0" VerticalAlignment="Top" Width="0.8"/>
+        <GroupBox Header="主控状态" HorizontalAlignment="Left" Height="140.712" VerticalAlignment="Top" Width="211.6" Margin="10,0,0,0">
+            <Canvas HorizontalAlignment="Left" Height="107.2" Margin="28.867,10,0,0" VerticalAlignment="Top" Width="136">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="运行指示" Canvas.Top="0.8"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Text="系统报警" Canvas.Top="16.04"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Top="31.28"><Run Text="通信"/><Run Text="状态"/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Top="46.52"><Run Text="急停"/><Run Text="状态"/></TextBlock>
+                <Ellipse x:Name="xtyun" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="111" Canvas.Top="1.04"/>
+                <Ellipse x:Name="xtbj" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="111" Canvas.Top="16.28"/>
+                <Ellipse x:Name="txzg" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="111" Canvas.Top="31.52"/>
+                <Ellipse x:Name="jtzg" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="111" Canvas.Top="46.76"/>
+                <Label Content="通信故障代码" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="66.76"/>
+                <Label Content="PLC故障代码" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.078,-0.051" Canvas.Top="82.227"/>
+                <TextBox x:Name="PLCgzdm" HorizontalAlignment="Left" BorderBrush="AliceBlue" Height="18" TextWrapping="Wrap" VerticalAlignment="Top" Width="56.473" Canvas.Left="79.527" Canvas.Top="85.067"/>
+                <TextBox x:Name="PLCtxdm" HorizontalAlignment="Left" BorderBrush="AliceBlue"  Height="17.707" TextWrapping="Wrap" VerticalAlignment="Top" Width="56.473" Canvas.Left="79.527" Canvas.Top="66.76"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Header="系统参数设置" HorizontalAlignment="Left" Height="162.267" Margin="10,145.712,0,0" VerticalAlignment="Top" Width="211.6">
+            <Canvas HorizontalAlignment="Left" Height="143.201" Margin="10,0,0,-3.174" VerticalAlignment="Top" Width="164.533">
+                <TextBox x:Name="tjsxwd" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Canvas.Left="97" Canvas.Top="6.72"/>
+                <Label  Content="停机上限温度" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="8"/>
+                <Label Content="严重对比温度" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="30.24"/>
+                <Label Content="报警偏差温度" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="56.48"/>
+                <Label Content="主副温度对比" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="84.72"/>
+                <TextBox x:Name="yzdbwd" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Canvas.Left="97" Canvas.Top="32.72"/>
+                <TextBox x:Name="bjpcwd" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Canvas.Left="97" Canvas.Top="59.72"/>
+                <TextBox x:Name="zfwddb" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" Canvas.Left="97" Canvas.Top="86.96"/>
+                <Button x:Name="xtcsgx" Content="更新" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45.8"  Canvas.Left="26.667" Canvas.Top="123.961" RenderTransformOrigin="-1.106,3.293" Click="xtcsgx_Click"/>
+                <Button Content="保存" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45.8" Canvas.Left="97" Canvas.Top="123.961" Click="Button_Click_3"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox Header="分柜状态" HorizontalAlignment="Left" Height="423.2" VerticalAlignment="Top" Width="314.667" Margin="226.6,0,0,0">
+            <GroupBox.Background>
+                <ImageBrush/>
+            </GroupBox.Background>
+            <Grid HorizontalAlignment="Left" Height="379.802" VerticalAlignment="Top" Width="264.533" Margin="17.334,20.672,0,0">
+                <DataGridRowsPresenter HorizontalAlignment="Left" Height="269.6" VerticalAlignment="Top" Width="129.6" Margin="0,82.933,0,0">
+                    <DataGridRowsPresenter HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="100"/>
+                    <TextBlock HorizontalAlignment="Left" Height="15.24" TextWrapping="Wrap" Text="加热使能" VerticalAlignment="Top" Width="132"/>
+                    <CheckBox x:Name="Heatingzone1" Content="1号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone2" Content="2号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone3" Content="3号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone4" Content="4号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone5" Content="5号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone6" Content="6号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone7" Content="7号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone8" Content="8号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone9" Content="9号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone10" Content="10号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone11" Content="11号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone12" Content="12号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone13" Content="13号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone14" Content="14号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone15" Content="15号点加热使能" Margin="0,0,20.466,0"/>
+                    <CheckBox x:Name="Heatingzone16" Content="16号点加热使能" Margin="0,0,20.466,0"/>
+                </DataGridRowsPresenter>
+                <DataGridRowsPresenter HorizontalAlignment="Left" Height="262.867" Margin="129.6,82.933,0,0" VerticalAlignment="Top" Width="90.8">
+                    <TextBlock HorizontalAlignment="Left" Height="15.24" TextWrapping="Wrap" VerticalAlignment="Top" Width="132"><Run Text="副传感器"/><Run Text="使能"/></TextBlock>
+                    <CheckBox x:Name="Secondarysensor1" Content="1副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor2" Content="2副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor3" Content="3副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor4" Content="4副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor5" Content="5副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor6" Content="6副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor7" Content="7副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor8" Content="8副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor9" Content="9副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor10" Content="10副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor11" Content="11副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor12" Content="12副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor13" Content="13副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor14" Content="14副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor15" Content="15副使能" Margin="0,0,0,0"/>
+                    <CheckBox x:Name="Secondarysensor16" Content="16副使能" Margin="0,0,0,0" HorizontalAlignment="Left" Width="90.8"/>
+
+                </DataGridRowsPresenter>
+                <Canvas HorizontalAlignment="Left" Height="82.933" VerticalAlignment="Top" Width="90.399">
+                    <Ellipse x:Name="FGTX" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="73.399" Canvas.Top="1.04"/>
+                    <Ellipse x:Name="FGKK" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="73.399" Canvas.Top="16.28"/>
+                    <Ellipse x:Name="FGJT" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="73.399" Canvas.Top="31.52"/>
+                    <Ellipse x:Name="FGJCQ" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="73.399" Canvas.Top="46.76"/>
+                    <Ellipse x:Name="FGXX" Fill="#FFB7B7BA" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="15" Canvas.Left="73.399" Canvas.Top="62"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Top="0.8"><Run Text="通信"/><Run Text="指示"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Top="16.04"><Run Text="空开"/><Run Text="指示"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Top="31.28"><Run Text="急停"/><Run Text="指示"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Top="46.52"><Run Text="接触器"/><Run Text="指示"/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Top="61.76"><Run Text="相序"/><Run Text="指示"/></TextBlock>
+                </Canvas>
+                <ComboBox x:Name="FGB" HorizontalAlignment="Left" SelectedIndex="0" VerticalAlignment="Top" Width="120" Margin="107.2,0,0,0" RenderTransformOrigin="-0.391,0.505" SelectionChanged="FGB_SelectionChanged" DropDownClosed="FGB_DropDownClosed">
+                    <ComboBox.Background>
+                        <ImageBrush ImageSource="下拉.png"/>
+                    </ComboBox.Background>
+                    <CheckBox x:Name="Cabinet1" Content="1号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet2" Content="2号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet3" Content="3号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet4" Content="4号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet5" Content="5号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet6" Content="6号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet7" Content="7号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet8" Content="8号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet9" Content="9号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet10" Content="10号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet11" Content="11号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet12" Content="12号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet13" Content="13号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet14" Content="14号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet15" Content="15号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet16" Content="16号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet17" Content="17号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet18" Content="18号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet19" Content="19号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet20" Content="20号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet21" Content="21号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet22" Content="22号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet23" Content="23号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet24" Content="24号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet25" Content="25号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet26" Content="26号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet27" Content="27号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet28" Content="28号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet29" Content="29号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet30" Content="30号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet31" Content="31号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                    <CheckBox x:Name="Cabinet32" Content="32号柜" BorderBrush="AliceBlue" Background="AliceBlue" />
+                </ComboBox>
+                <Button Content="更新" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45.8" Margin="107.2,46.546,0,0" Click="Button_Click" RenderTransformOrigin="0.163,0.332"/>
+                <Button Content="保存" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45.8" Margin="158,46.546,0,0" Click="Button_Click_1"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="fgyxztl" Header="1号分柜运行状态" HorizontalAlignment="Left" Height="423.2" Margin="742.4,0,0,0" VerticalAlignment="Top" Width="441.2">
+            <Grid Margin="0,10,-4.4,0" HorizontalAlignment="Left" Width="433.6" Height="396.4" VerticalAlignment="Top" >
+                <Label Content="主传感器温度" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,0,0,0"/>
+                <UniformGrid HorizontalAlignment="Left" Height="370.52" Margin="63,25.24,0,-33.76" VerticalAlignment="Top" Width="80" Columns="2" Rows="16">
+                    <Label Content="1区" VerticalAlignment="Top" Margin="0,0,-33.2,0" HorizontalAlignment="Left"/>
+                    <Label x:Name="ztwd1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="2区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="3区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd3" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="4区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="5区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="6区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="7区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd7" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="8区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="9区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd9" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="10区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="11区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd11" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="12区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="13区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ztwd13" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="14区" HorizontalAlignment="Left" Margin="0,0,0,-1.533"/>
+                    <Label x:Name="ztwd14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label Content="15区" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label x:Name="ztwd15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label Content="16区" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label x:Name="ztwd16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                </UniformGrid>
+                <Label Content="副传感器温度" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="142,0,0,0"/>
+                <UniformGrid HorizontalAlignment="Left" Height="370.52" Margin="146,25.24,0,-33.76" VerticalAlignment="Top" Width="80" Columns="2" Rows="16">
+                    <Label Content="1区" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,-33.2,0"/>
+                    <Label x:Name="ftwd1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="2区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="3区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd3" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="4区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="5区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="6区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="7区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd7" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="8区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="9区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd9" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="10区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="11区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd11" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="12区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="13区" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="ftwd13" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="14区" HorizontalAlignment="Left" Margin="0,0,0,-1.533"/>
+                    <Label x:Name="ftwd14" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label Content="15区" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label x:Name="ftwd15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label Content="16区" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                    <Label x:Name="ftwd16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-1.533"/>
+                </UniformGrid>
+                <Label Content="限温开关" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="366,0,0,0"/>
+                <UniformGrid HorizontalAlignment="Left" Height="361.92" Margin="372,33.84,0,0" VerticalAlignment="Top" Width="53" Columns="1" Rows="16">
+                    <Ellipse x:Name="xwkg1" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg2" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg3" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg4" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg5" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg6" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg7" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg8" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg9" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg10" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg11" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg12" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg13" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg14" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg15" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="xwkg16" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                </UniformGrid>
+                <Label Content="电流" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="265,0,0,0"/>
+                <UniformGrid HorizontalAlignment="Left" Height="370.52" VerticalAlignment="Top" Width="33" Margin="266,25.88,0,0" Columns="1" Rows="16">
+                    <Label x:Name="dl1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl3" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl7" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl9" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl11" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl13" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="dl16" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                </UniformGrid>
+                <Label Content="加热" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="304,0,0,0"/>
+                <UniformGrid HorizontalAlignment="Left" Height="361.92" Margin="296.2,33.84,0,0" VerticalAlignment="Top" Width="53" Columns="1" Rows="16">
+                    <Ellipse x:Name="jrzs1" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs2" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs3" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs4" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs5" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs6" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs7" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs8" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs9" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs10" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs11" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs12" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs13" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs14" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs15" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="jrzs16" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                </UniformGrid>
+                <Label Content="保温" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="331,0,0,0"/>
+                <UniformGrid HorizontalAlignment="Left" Height="361.92" Margin="326.2,33.84,0,0" VerticalAlignment="Top" Width="53" Columns="1" Rows="16">
+                    <Ellipse x:Name="bwzs1" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs2" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs3" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs4" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs5" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs6" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs7" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs8" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs9" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs10" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs11" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs12" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs13" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs14" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs15" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="bwzs16" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                </UniformGrid>
+                <Label Content="输出" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="232,0,0,0"/>
+                <UniformGrid HorizontalAlignment="Left" Height="361.92" Margin="223.4,33.84,0,0" VerticalAlignment="Top" Width="53" Columns="1" Rows="16">
+                    <Ellipse x:Name="sczs1" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs2" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs3" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs4" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs5" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs6" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs7" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs8" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs9" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs10" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs11" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs12" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs13" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs14" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs15" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                    <Ellipse x:Name="sczs16" Fill="#FFB7B7BA" HorizontalAlignment="Center" Height="15" VerticalAlignment="Top" Width="15"/>
+                </UniformGrid>
+                <Label Content="目标温度" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <UniformGrid HorizontalAlignment="Left" Height="371.286" Margin="5,25.88,0,-0.766" VerticalAlignment="Top" Width="50" Rows="16" Columns="1">
+                    <Label x:Name="mbws1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws3" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws4" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws6" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws7" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws9" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws11" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws12" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws13" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws14" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws15" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label x:Name="mbws16" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                </UniformGrid>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="曲线设置" HorizontalAlignment="Left" Height="247.421" Margin="10,312.979,0,0" VerticalAlignment="Top" Width="211.6">
+            <Grid HorizontalAlignment="Left" Margin="4,7.615,-2,21.6" Width="197.6">
+                <UniformGrid HorizontalAlignment="Left" Height="125.4" VerticalAlignment="Top" Width="71.2" Rows="5" Columns="1" Margin="20,0,0,0">
+                    <Label Content="目标温度" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="升温时间" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="保温时间" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="温差报警值" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="曲线号" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                </UniformGrid>
+                <UniformGrid HorizontalAlignment="Left" Height="130.6" Margin="105.8,0,0,0" VerticalAlignment="Top" Width="61.6" Rows="5" Columns="1">
+                    <TextBox x:Name="mbwdsz" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+                    <TextBox x:Name="swsjsz" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+                    <TextBox x:Name="bwsjsz" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+                    <TextBox x:Name="wcsz" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+                    <TextBox x:Name="xrqxh" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="23" Width="60" Margin="0,-2.88,1.6,4.96">
+                        <TextBox.Resources>
+                            <VisualBrush x:Key="HintText" TileMode="None" Opacity="0.5" Stretch="None" AlignmentX="Left">
+                                <VisualBrush.Visual>
+                                    <TextBlock FontStyle="Italic" Text="1---6"/>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </TextBox.Resources>
+                        <TextBox.Style>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter Property="Background" Value="{StaticResource HintText}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </UniformGrid>
+                <Button Content="写入" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45.8" Margin="121.6,155.526,0,0" Click="Button_Click_2">
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="qdjrk" Header="1号柜分配工艺" HorizontalAlignment="Left" Height="423.2" Margin="546.267,0,0,0" VerticalAlignment="Top" Width="190.6">
+            <Grid Height="369.6" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="154.4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="27*"/>
+                    <ColumnDefinition Width="127*"/>
+                </Grid.ColumnDefinitions>
+                <DataGridRowsPresenter HorizontalAlignment="Left" Height="249.2" VerticalAlignment="Top" Width="97.6" Margin="10,110.4,0,0" Grid.ColumnSpan="2">
+                    <CheckBox x:Name="Heatingswitch1" Content="1号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch2" Content="2号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch3" Content="3号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch4" Content="4号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch5" Content="5号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch6" Content="6号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch7" Content="7号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch8" Content="8号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch9" Content="9号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch10" Content="10号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch11" Content="11号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch12" Content="12号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch13" Content="13号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch14" Content="14号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch15" Content="15号加热点" Margin="0,0,14.066,0"/>
+                    <CheckBox x:Name="Heatingswitch16" Content="16号加热点" Margin="0,0,14.066,0"/>
+                </DataGridRowsPresenter>
+                <Grid HorizontalAlignment="Left" Height="84" VerticalAlignment="Top" Width="148.267" Grid.ColumnSpan="2">
+                    <DataGridRowsPresenter HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="69.867" >
+                        <Label Content="启动工艺" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Label Content="启动曲线" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    </DataGridRowsPresenter>
+                    <TextBox x:Name="qdgyh" TextWrapping="Wrap" RenderTransformOrigin="-0.163,0.119" Margin="70.461,2.668,0,0" HorizontalAlignment="Left" Width="60" Height="20" VerticalAlignment="Top"/>
+                    <Button Content="启动" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45.8" Margin="102.467,64.76,0,0" Click="Button_Click_5">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
+                    <TextBox x:Name="qxhsz" TextWrapping="Wrap" RenderTransformOrigin="-0.163,0.119" Margin="70.461,27.668,0,0" HorizontalAlignment="Left" Width="60" Height="20" VerticalAlignment="Top"/>
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
